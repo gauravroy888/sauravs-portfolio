@@ -1187,7 +1187,25 @@ section {
 
 @media (max-width: 768px) {
     .navbar {
-        display: none; /* Hide on mobile for now, usually would add a hamburger menu */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(9, 9, 11, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: none;
+    }
+    
+    .navbar.active {
+        display: flex;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: minmax(280px, 1fr);
     }
     
     .mobile-menu-btn {
@@ -1231,5 +1249,13 @@ section {
     .footer-content {
         flex-direction: column;
         text-align: center;
+    }
+    
+    .project-img {
+        height: 220px;
+    }
+    
+    .project-card {
+        margin: 0 10px;
     }
 }

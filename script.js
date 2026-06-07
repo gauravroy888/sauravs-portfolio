@@ -291,3 +291,33 @@ document.addEventListener("DOMContentLoaded", () => {
     init();
     animate();
 });
+
+/* Mobile Menu Toggle */
+document.addEventListener("DOMContentLoaded", () => {
+    const mobileBtn = document.querySelector(".mobile-menu-btn");
+    const navbar = document.querySelector(".navbar");
+    
+    if (mobileBtn && navbar) {
+        mobileBtn.addEventListener("click", () => {
+            navbar.classList.toggle("active");
+            
+            // Toggle menu icon between menu and close
+            const icon = mobileBtn.querySelector("ion-icon");
+            if (navbar.classList.contains("active")) {
+                icon.setAttribute("name", "close-outline");
+            } else {
+                icon.setAttribute("name", "menu-outline");
+            }
+        });
+        
+        // Close menu when clicking a link
+        const navLinks = navbar.querySelectorAll("a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navbar.classList.remove("active");
+                const icon = mobileBtn.querySelector("ion-icon");
+                if (icon) icon.setAttribute("name", "menu-outline");
+            });
+        });
+    }
+});
